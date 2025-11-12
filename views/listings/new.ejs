@@ -1,0 +1,102 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br>
+      <h3 class="text-center fw-semibold">CREATE A NEW LISTING</h3>
+      <br>
+
+      <form class="needs-validation" novalidate action="/listings" method="POST" enctype="multipart/form-data">
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input id="title" name="listing[title]" type="text"
+                 placeholder="Enter title" class="form-control" required>
+          <div class="invalid-feedback">
+            Please enter a title.
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" name="listing[description]"
+                    placeholder="Enter description" class="form-control" rows="3" required></textarea>
+          <div class="invalid-feedback">
+            Please enter a description.
+          </div>
+        </div>
+
+        <!-- Image Link (Optional) -->
+        <!-- <div class="mb-3">
+          <label for="image" class="form-label">Image Link (optional)</label>
+          <input id="image" name="listing[Image]" class="form-control" type="text"
+                 placeholder="Enter image link">
+        </div> -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Listing Image</label>
+          <input id="image" name="listing[Image]" class="form-control" type="file" required>
+        </div>
+        
+        <div class="row">
+          <!-- Price -->
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price (₹)</label>
+            <input id="price" name="listing[price]" class="form-control no-spinner" type="number"
+                   placeholder="Enter price" required min="1">
+            <div class="invalid-feedback">
+              Please enter a valid price.
+            </div>
+          </div>
+
+          <!-- Country -->
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input id="country" name="listing[country]" class="form-control" type="text"
+                   placeholder="Enter country" required>
+            <div class="invalid-feedback">
+              Please enter a country name.
+            </div>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input id="location" name="listing[location]" class="form-control" type="text"
+                 placeholder="Enter location" required>
+          <div class="invalid-feedback">
+            Please enter a location.
+          </div>
+        </div>
+
+        <br>
+        <div class="d-grid">
+          <button class="btn btn-dark btn-lg" type="submit">ADD</button>
+        </div>
+        <br>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap Validation Script -->
+  <!-- <script>
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script> -->
+  
+</body>

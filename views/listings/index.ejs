@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+    <h1>All listings</h1>
+    <hr>
+    <!-- <form action="/listings/new" method="GET">
+        <button>CREATE NEW LISTING</button>
+    </form> -->
+<% if (allListings.length > 0) { %>
+    <div class="row col row-cols-1 row-cols-md-3">
+        <% for(let listings of allListings){ %>
+            <div class="card " style="width: 18rem;">
+                    <img class="card-img-top" src="<%= listings.Image.url %>" alt="listing image">
+                <div class="card-body">
+                    <h5 class="card-title"><%= listings.title %></h5>
+                    <p class="card-text"><%= listings.description %></p>
+                    <p class="card-text">&#8377 <%= listings.price.toLocaleString("en-IN") %></p>
+                    <a href="/listings/<%= listings._id %>" class="btn btn-primary">View Listing</a>
+                </div>
+            </div>    
+        <% } %>
+    </div>
+<% } else { %>
+  <div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 60vh;">
+    <h3 class="fw-semibold text-muted mb-3">No Listings Yet!</h3>
+    <a href="/listings/new" class="btn btn-dark mt-3 px-4">Add Listing</a>
+  </div>
+<% } %>
+
+
+    <!-- <ul>
+        <% for(let listings of allListings){ %>
+            <li><a href="/listings/<%= listings._id %>"><%= listings.title %></a></li>
+        <% } %>
+    </ul> -->
+</body>
